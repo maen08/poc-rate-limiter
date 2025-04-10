@@ -12,10 +12,10 @@ import (
 
 var rateLimit = 5
 var bucket []int64
-var mu sync.Mutex    // Mutex to avoid race conditions on the bucket
+var mu sync.Mutex    
 
 func refillBucket() {
-	mu.Lock() // lock the bucket to avoid concurrent modification
+	mu.Lock() // lock the bucket to avoid race condition
 	defer mu.Unlock()
 
 	token := time.Now().Unix()
